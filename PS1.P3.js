@@ -1,4 +1,4 @@
-const appliedFunction = (str, fxn) => {return fxn(str)};
+const appliedFunction = (str, fxn) => fxn(str);
 
 const superStr = 'supercalifragilisticexpialidocious';
 const splitOnC = appliedFunction(superStr, str => str.split(/(?=c)/));
