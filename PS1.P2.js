@@ -9,20 +9,16 @@ const evaluate = term =>
 
 //const expressions = ['4+2', '5*7', '6-1', '9/2'];
 let expression = '4+2';
-let operator = evaluate(expression);
-console.log(`${expression} = ${operator(expression.charAt((0)), expression.charAt(2))}`);
+console.log(`${expression} = ${evaluate(expression)(expression.charAt((0)), expression.charAt(2))}`);
 
 expression = '5*7';
-operator = evaluate(expression);
-console.log(`${expression} = ${operator(expression.charAt((0)), expression.charAt(2))}`);
+console.log(`${expression} = ${evaluate(expression)(expression.charAt((0)), expression.charAt(2))}`);
 
 expression = '6-1';
-operator = evaluate(expression);
-console.log(`${expression} = ${operator(expression.charAt((0)), expression.charAt(2))}`);
+console.log(`${expression} = ${evaluate(expression)(expression.charAt((0)), expression.charAt(2))}`);
 
 expression = '9/2';
-operator = evaluate(expression);
-console.log(`${expression} = ${operator(expression.charAt((0)), expression.charAt(2))}`);
+console.log(`${expression} = ${evaluate(expression)(expression.charAt((0)), expression.charAt(2))}`);
 
 // const operate = evaluate('4+2');
 // console.log(`${operate('4', '2')}`);
