@@ -9,13 +9,12 @@ function* fibsGen() {
 }
 
 function* evenFibsGen() {
-    let fibonacci = fibsGen();
-    let fibRes = fibonacci.next();
-    while (!fibRes.done) {
-        if (fibRes.value % 2 == 0) {
-            yield fibRes.value;
+    const fibonacci = fibsGen();
+    while (true) {
+        let fib = fibonacci.next();
+        if (fib.value % 2 == 0) {
+            yield fib.value;
         }
-        fibRes = fibonacci.next();
     }
 }
 
