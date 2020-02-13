@@ -11,9 +11,9 @@ function* fibsGen() {
 function* evenFibsGen() {
     const fibonacci = fibsGen();
     while (true) {
-        let fib = fibonacci.next();
-        if (fib.value % 2 == 0) {
-            yield fib.value;
+        let fib = fibonacci.next().value;
+        if (fib % 2 == 0) {
+            yield fib;
         }
     }
 }
