@@ -1,0 +1,45 @@
+extends layout
+
+block content
+    if (country != undefined)
+        h1 COVID-19 Cases in #{country}
+    else
+        h1 COVID-19 Cases per Country
+
+    form(action='/ps4', method='GET')
+        p
+            | Please enter a three-digit country code:
+            input(type='text', name='country', value='')
+            input(type='submit', value='Submit')
+
+
+        //#table-wrapper
+        //    table#desc
+        //        tr
+        //            th Date
+        //            th Confirmed
+        //            th Deaths
+        //            th Recovered
+        //        tr
+        //            td(height='100px') Additional scheduled projects and service
+        //        tr
+        //            td Unscheduled Response – After Hours Monday – Friday, 6:00pm – 7:30am Saturday, Sunday
+
+        if (country != undefined)
+            .container
+                table.table(border='3')
+                    tr
+                        th Date
+                        th Confirmed
+                        th Deaths
+                        th Recovered
+                    each dateJSON, date in cases
+                        tr
+                            td #{date}
+                            td #{dateJSON.confirmed}
+                            td #{dateJSON.deaths}
+                            td #{dateJSON.recovered}
+
+
+    //if (country != undefined)
+    //    p Country = #{country}
