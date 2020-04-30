@@ -21,5 +21,9 @@
   </div>
  </form>
 
+ <div *ngIf="this.validCountry == false">
+   <br>
+   ISO code is invalid.
+ </div>
  <app-results [selectedCountry]="selectedCountry" [results]="results"></app-results>
 
