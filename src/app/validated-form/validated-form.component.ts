@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, ValidatorFn} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import {CovidService} from '../services/covid.service';
-import {COVID} from '../COVID';
+import { countryCodes } from '../variousCountryListFormats.js';
 
 @Component({
   selector: 'app-validated-form',
@@ -12,15 +12,17 @@ export class ValidatedFormComponent implements OnInit {
 
   countryCode: FormControl = new FormControl('');
   selectedCountry: string;
+  isoCode: string;
   results: any;
-  validCountry = true;
+  validCountry: boolean;
   ngOnInit(): void {
   }
   getStats() {
     console.log('Validated-form getStats() called.');
     this.selectedCountry = this.countryCode.value;
     console.log(this.selectedCountry);
-    if (['USA', 'CHN', 'ITA'].includes(this.selectedCountry)) {
+    if (this.selectedCountry in countryCodes) {
+      this.validCountry = true;
       this.cvd.getData(this.selectedCountry).subscribe(
         response => {
           console.log('subscribed!');

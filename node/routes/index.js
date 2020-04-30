@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const fetch = require('node-fetch');
 const COVIDCountries = [
   {
     isoCode: 'USA',
@@ -38,8 +39,32 @@ const COVIDCountries = [
 // });
 
 
+const doCovidReq = async (isoCode) => {
+  let returnValueRaw = await fetch('https://covidapi.info/api/v1/country/' + isoCode);
+  let returnValue = await returnValueRaw.json();
+  return returnValue;
+};
+
+async function process (json) {
+  let array = [];
+  for (const key in json) {
+    console.log("Key: " + key +", Confirmed Value: " + json[key].confirmed);
+    await array.push({date: key, values: json[key]});
+  }
+  return array;
+};
+
 router.get('/:iso', function(req, res, next) {
-  // res.send(COVIDCountries[0].date);
-  res.send(COVIDCountries);
+  doCovidReq(`${req.url.slice(1)}`)
+
+    .then(countryJSON => {
+      process(countryJSON.result)
+        .then(dates => {
+          console.log(dates);
+          res.send(dates);
+        })
+    })
+    .catch(error => console.log(error))
 });
+
 module.exports = router;

@@ -8,8 +8,7 @@ import { COVID } from './COVID';
 })
 
 export class AppComponent {
-  title = 'USA, ITALY, CHINA - COVID 04/25';
-  results: any;
+  title = 'Covid Values: Confirmed, Dead, and Recovered';
   selectedCountry: COVID;
 
   selectCountry(c: COVID) {

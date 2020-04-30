@@ -10,6 +10,8 @@ export class ResultsComponent implements OnInit {
 
   @Input() selectedCountry: COVID;
   @Input() results: any;
+  @Input() validCountry: boolean;
+
   constructor() {
   }
 

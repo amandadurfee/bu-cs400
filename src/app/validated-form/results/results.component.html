@@ -1,9 +1,30 @@
-<div *ngFor="let c of this.results">
-  <div *ngIf="selectedCountry == c.isoCode">
-    <!-- display selected contact -->
-    <h3> April 25, 2020 Stats For {{ c.isoCode }} </h3>
-    <h4> Confirmed: {{ c.date.confirmed }}</h4>
-    <h4> Deaths: {{ c.date.deaths }}</h4>
-    <h4> Recovered: {{ c.date.recovered }}</h4>
-  </div>
+<div *ngIf="selectedCountry && validCountry">
+  <h3> Historical Data For {{ selectedCountry }} </h3>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Confirmed</th>
+      <th>Deaths</th>
+      <th>Recovered</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of this.results">
+        <th scope="row">{{c.date}}</th>
+        <td>{{c.values.confirmed}}</td>
+        <td>{{c.values.deaths}}</td>
+        <td>{{c.values.recovered}}</td>
+      </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
 </div>
+
+<!--
+<div *ngFor="let c of this.results">
+  <tr>
+
+  </tr>
+</div>
+-->
