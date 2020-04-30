@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { COVIDCountries } from './usaCovid';
 import { COVID } from './COVID';
 
 @Component({
@@ -10,7 +9,7 @@ import { COVID } from './COVID';
 
 export class AppComponent {
   title = 'USA, ITALY, CHINA - COVID 04/25';
-  countries = COVIDCountries;
+  results: any;
   selectedCountry: COVID;
 
   selectCountry(c: COVID) {

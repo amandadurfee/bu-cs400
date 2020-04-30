@@ -1,0 +1,25 @@
+ <form novalidate>
+
+   <div class = "input">
+      <label>ISO Code </label> <input type="text"
+                                      required maxlength="3"
+                                      required minlength="3"
+                                      required
+                                      [formControl]="countryCode">
+    <button ng-click="form.$valid" (click) ="getStats()" title="Get Results"> Get Result </button>
+   </div>
+
+
+  <div *ngIf="countryCode.errors?.minlength || countryCode.errors?.maxlength">
+    <br>
+    ISO code must be exactly 3 characters long.
+  </div>
+
+  <div *ngIf="countryCode.errors?.required">
+    <br>
+    ISO code must be included.
+  </div>
+ </form>
+
+ <app-results [selectedCountry]="selectedCountry" [results]="results"></app-results>
+

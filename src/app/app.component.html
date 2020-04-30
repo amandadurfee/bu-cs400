@@ -4,18 +4,13 @@
   </h1>
 </div>
 
-<div>
-<ul>
-  <li *ngFor="let c of countries">
-    <label (click)="selectCountry(c)">{{c.isoCode}}</label>
-  </li>
-</ul>
-</div>
+<!--<div>-->
+<!--<ul>-->
+<!--  <li *ngFor="let c of countries">-->
+<!--    <label (click)="selectCountry(c)">{{c.isoCode}}</label>-->
+<!--  </li>-->
+<!--</ul>-->
+<!--</div>-->
 
-<div *ngIf="selectedCountry">
-  <!-- display selected contact -->
-  <h3> April 25, 2020 Stats For {{selectedCountry.isoCode}} </h3>
-  <h4> Confirmed: {{ selectedCountry.date.confirmed }}</h4>
-  <h4> Deaths: {{ selectedCountry.date.deaths }}</h4>
-  <h4> Recovered: {{ selectedCountry.date.recovered }}</h4>
-</div>
+<app-validated-form></app-validated-form>
+
